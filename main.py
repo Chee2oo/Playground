@@ -7,8 +7,11 @@ from sklearn.metrics import mean_squared_error, r2_score
 import time
 
 # Beispiel-Daten erstellen
-np.random.seed(42)
+gettime = int(time.time())
+print(gettime)
+np.random.seed(gettime)
 X = 2 * np.random.rand(100, 1)
+X.sort(axis=0)
 y = 4 + 3 * X + np.random.randn(100, 1)
 
 # Daten in ein Pandas DataFrame laden
@@ -22,7 +25,7 @@ plt.title("Streudiagramm der Daten")
 plt.show()
 
 # Daten in Trainings- und Testdaten aufteilen
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1, random_state=10000)
 
 # Startzeit erfassen
 start_time = time.time()
